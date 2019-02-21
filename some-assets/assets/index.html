@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+
+	<script type="text/javascript">
+		function SimpleAlert(){
+			
+			let xhr=new XMLHttpRequest;
+			xhr.open("GET", "https://yvone.github.io/DAW/some-numbers.json");
+			xhr.onload=function()
+			{
+				let variable=JSON.parse(this.responseText);
+				
+				let pares= variable.filter(function(item, index){
+					return item%2==0;
+				});
+				console.log(pares);
+				let suma= variable.reduce(function(acc, i){
+					return acc+=i;
+				});
+				console.log(suma);
+				let mult= variable.reduce(function(acc, i){
+					return acc+=i*10;
+				});
+				console.log(mult);
+
+			alert("original: "+ variable+ "pares: "+ pares+ "suma: "+ "multiplicado" + mult );
+			xhr.send();
+			}
+		}
+
+	</script>
+
+	<div class="column">
+		<div class="check"><img src="check_icon.png" class="image"></div>
+		<div class="column">
+			<p>YOUR MEAL IS READY</p>
+			<p>Pick up your meal in "Andreas´s Kitchen"</p>
+		</div>
+		<div><img src="food2.jpg" class="comida"></div>
+		<div>Rate your meal</div>
+		<div class="stars">
+			<div><img src="star_icon.png" class="star"></div>
+			<div><img src="star_icon.png" class="star"></div>
+			<div><img src="star_icon.png" class="star"></div>
+			<div><img src="star_icon.png" class="star"></div>
+			<div><img src="star_icon.png" class="star"></div>
+		</div>
+		<button onclick="SimpleAlert()">Ok!</button>
+	</div>
+	
+
+</body>
+</html>
